@@ -1,3 +1,4 @@
+#Coloca la iluminacion que los bombillos producen
 def habitacion_iluminada(habitacion_ob,renglon,columnas):
 #adelante
     for k in range(0,renglon):
@@ -7,8 +8,8 @@ def habitacion_iluminada(habitacion_ob,renglon,columnas):
                 j=i+1
                 while j<columnas and (habitacion_ob[k][j]==0 or habitacion_ob[k][j]=="i"):
                     habitacion_ob[k][j]="i"
-                    j=j+1                
-            i=i+1
+                    j+=1                
+            i+=1
 
 #atraz i=1,j=i-1,j=j-1
     for k in range(0,renglon):#rellenar atraz
@@ -18,8 +19,8 @@ def habitacion_iluminada(habitacion_ob,renglon,columnas):
                 j=i-1
                 while j>-1 and (habitacion_ob[k][j]==0 or habitacion_ob[k][j]=="i"):
                     habitacion_ob[k][j]="i"
-                    j=j-1
-            i=i+1
+                    j-=1
+            i+=1
 
 #abajo
     for k in range(0,columnas):
@@ -29,8 +30,8 @@ def habitacion_iluminada(habitacion_ob,renglon,columnas):
                 j=i+1
                 while (j<renglon) and (habitacion_ob[j][k]==0 or habitacion_ob[j][k]=="i"):
                     habitacion_ob[j][k]="i"
-                    j=j+1
-            i=i+1
+                    j+=1
+            i+=1
 
 #arriba
     for k in range(0,columnas):
@@ -43,10 +44,12 @@ def habitacion_iluminada(habitacion_ob,renglon,columnas):
                     j=j-1
             i=i+1
 
+#Coloca los bombillos de forma arbitraria (en la esquina sup derecha y su contraesquina)
 def default(habitacion_ob,a,b):
      if habitacion_ob[a][b]==0:
         habitacion_ob[a][b]="B"
 
+#Sondea donde no hay iluminacion
 def mapeo(habitacion_ob, renglon,columnas,a,b,c):
     j=0
     while j<renglon-a:
@@ -58,6 +61,7 @@ def mapeo(habitacion_ob, renglon,columnas,a,b,c):
             i=i+1
         j=j+1
 
+#muestra la habitacion y cambia  1 por P
 def mostrar_hab(habitacion_ob,renglon,columnas):
     k=0
     while k<renglon:
@@ -72,6 +76,7 @@ def mostrar_hab(habitacion_ob,renglon,columnas):
         print(habitacion_ob[i])
         i=i+1
 
+#Cuenta las bombillas totales
 def nbombillas(habitacion_ob, renglon):
     i=0    
     c=0
@@ -82,6 +87,7 @@ def nbombillas(habitacion_ob, renglon):
     
     print("\n El numero de bombillas que necesitaremos es: "+ str(c))
 
+#Coloca los bombillos
 def bombillas(habitacion_ob, renglon,columnas):
     
     default(habitacion_ob=habitacion_ob,a=0,b=0)
@@ -92,7 +98,7 @@ def bombillas(habitacion_ob, renglon,columnas):
     mostrar_hab(habitacion_ob=habitacion_ob,renglon=renglon,columnas=columnas)
     nbombillas(habitacion_ob=habitacion_ob, renglon=renglon)
     
-
+#es la principal, abre el archivo txt y lo traduce a idioma python
 def run():
     
     lectura=[]
@@ -102,13 +108,11 @@ def run():
             lectura.append(linea)
 
     renglones=len(lectura)
-    
     dict_lectura={i:lectura[i] for i in range(0,renglones)}
-
-    print("Numero de renglones: "+ str(renglones))
-
+    
+    print(f'Numero de renglones: {str(renglones)}')
     columnas=len(lectura[1])-1
-    print("Numero de columnas: "+str(columnas))
+    print(f'Numero de columnas:  {str(columnas)}')
     habitacion_obscura=[]
     
     print("Aqui se muestra la habitacion obscura")
@@ -124,7 +128,7 @@ def run():
         habitacion_obscura.append(renglon)
         j=j+1
 
-    print("\n Podemos observar la habitacion iluminada\n Donde B es el bombillo \n i es el espacio iluminado\n y P las paredes\n")
+    print("\n Podemos observar la habitacion iluminada donde:\n B es el bombillo \n i es el espacio iluminado y\n  P las paredes\n")
     bombillas(habitacion_ob=habitacion_obscura, renglon=renglones,columnas=columnas)
 
 
