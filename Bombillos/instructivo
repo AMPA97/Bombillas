@@ -1,0 +1,14 @@
+Para introducir las diferentes matrices solo debes entrar 
+al archivo llamado matriz y modificarlo con los nuevos 
+valores, o bien puedes entrar al codigo fuente, ir al 
+renglon 105, eliminar la direccion del archivo que ya 
+se encuentra y poner la direccion del nuevo archivo.
+Para que el codigo funcione los 0 y 1 no deben tener 
+separacion entre si y no debe haber mas que los numeros,
+y el numero de columnas debe ser siempre el mismo en todos 
+los renglones tal como se muestra en abajo:
+
+0010
+0000
+1100
+0100  
